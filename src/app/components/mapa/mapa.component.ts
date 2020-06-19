@@ -45,6 +45,7 @@ export class MapaComponent implements OnInit {
     this.snackBar.open('Agregado correctamente', 'cerrar', {
       duration: 900,
     });
+    console.log(evento);
   }
 
   guardarStorage() {
@@ -57,15 +58,34 @@ export class MapaComponent implements OnInit {
     this.snackBar.open('Elimiando correctamente', 'cerrar', {
       duration: 2000,
     });
+    console.log(i);
   }
 
   editarMarcador(marcador: Marcador) {
-
+    //este es para abrir el dialogo con el componente hijo
     const dialogRef = this.dialog.open(MapaEditarComponent, {
       width: '250px',
       data: { titulo: marcador.titulo, desc: marcador.desc }
     });
+    //este es para cerrar el dialogo y obtener lo que nos esta mandando el componente hijo
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('the dialog was closed', result);
+      if (!result) {
+        return;
+      }
+      //aqui obtenemos el valor que nos manda el dialog desde el componente hijo 
+      marcador.titulo = result.titulo;
+      marcador.desc = result.desc;
+      this.guardarStorage();
+      this.snackBar.open('Actualizado correctamente', 'cerrar', {
+        duration: 1000,
+      });
+    });
+    console.log('editarMarcador: ', marcador);
   }
+
+
+
 
 
 

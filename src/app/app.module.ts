@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 
 import { MapaComponent } from './components/mapa/mapa.component';
 import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,10 +28,11 @@ import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
     //GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDdWGvCbQC_HkflmHDKlz_CRQqVM88A03o'
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
